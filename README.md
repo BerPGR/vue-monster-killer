@@ -74,7 +74,7 @@ Contributions are welcome! If you want to contribute to the Monster Killer proje
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the project according to your needs.
+There is no license for this project
 
 ## Contact
 
