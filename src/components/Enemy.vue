@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <p>The terrible monster</p>
-    <div class="life"></div>
+    <div class="lifecontainer">
+      <div class="life"></div>
+    </div>
   </div>
 </template>
 
@@ -21,11 +23,18 @@ export default {
     align-items: center;
     margin-top: 50px;
 }
-.life {
+.lifecontainer {
     border: 2px solid black;
-    background-color: red;
     height: 20px;
-    width: 400px;
+    width: 403px;
     margin-top: 20px;
+    position: relative;
+}
+
+.life {
+  background-color: red;
+  height: 17px;
+  width: 400px;
+  position: absolute;
 }
 </style>

@@ -31,16 +31,16 @@ export default {
   },
   methods: {
     attack() {
-
+      console.log('Attack');
     },
     defend() {
-
+      console.log('defend');
     },
     cure() {
-
+      console.log('cure');
     },
     special() {
-
+      console.log('special');
     }
   }
 };

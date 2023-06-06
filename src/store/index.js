@@ -4,7 +4,10 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    playersLife: 100,
+    enemyLife: 100
+  },
   getters: {},
   mutations: {},
   actions: {},

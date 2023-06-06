@@ -1,6 +1,11 @@
 <template>
   <div>
-    <button :style="{backgroundColor: bgColor}" @click.prevent="">{{ buttonName }}</button>
+    <button 
+      :style="{backgroundColor: bgColor, color: bgColor == 'yellow' || bgColor == 'aqua' ? 'black' : 'white'}" 
+      @click="executePropFunction"
+    >
+      {{ buttonName }}
+    </button>
   </div>
 </template>
 
@@ -20,15 +25,22 @@ export default {
         type: String
       }
     },
+    methods: {
+      executePropFunction() {
+        this.playerAction()
+      }
+    }
 }
 </script>
 
 <style>
 button {
   width: 200px;
-  padding: 10px;
-  background-color: red;
+  padding: 5px;
   color: white;
-  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
 }
 </style>
