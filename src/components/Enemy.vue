@@ -1,13 +1,31 @@
 <template>
-  <div class=""></div>
+  <div class="container">
+    <p>The terrible monster</p>
+    <div class="life"></div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "EnemyComponent"
+    name: 'LifeComponent',
+    data: () => ({
+        life: 100,
+    })
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+.life {
+    border: 2px solid black;
+    background-color: red;
+    height: 20px;
+    width: 400px;
+    margin-top: 20px;
+}
 </style>
