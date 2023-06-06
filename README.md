@@ -50,7 +50,6 @@ The Monster Killer project has the following features:
 
 The project directory structure is organized as follows:
 
-.
 ├── src/ # Project source code files
 │ ├── assets/ # Static resources (images, fonts, etc.)
 │ ├── components/ # Reusable Vue components
