@@ -8,8 +8,21 @@ export default new Vuex.Store({
     playersLife: 100,
     enemyLife: 100
   },
-  getters: {},
-  mutations: {},
+  getters: {
+    getEnemyLife(state) {
+      return state.enemyLife
+    }
+  },
+  mutations: {
+    setAttackMovement(state, playerAttack) {
+      if(playerAttack < state.enemyLife) {
+        state.enemyLife -= playerAttack;
+      }
+      else {
+        state.enemyLife = 0
+      }
+    }
+  },
   actions: {},
   modules: {},
 });

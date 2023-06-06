@@ -20,6 +20,7 @@ import Title from './components/Title.vue';
 import Life from './components/Life.vue';
 import Enemy from './components/Enemy.vue';
 import Selection from './components/Selection.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: "App",
@@ -31,7 +32,8 @@ export default {
   },
   methods: {
     attack() {
-      console.log('Attack');
+      const playerAttack = Math.floor(Math.random() * 15) + 5
+      this.$store.commit('setAttackMovement', playerAttack)
     },
     defend() {
       console.log('defend');
@@ -42,6 +44,11 @@ export default {
     special() {
       console.log('special');
     }
+  },
+  computed: {
+    ...mapGetters({
+      enemyLife: 'getEnemyLife'
+    })
   }
 };
 </script>

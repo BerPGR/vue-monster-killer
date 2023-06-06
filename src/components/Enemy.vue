@@ -2,17 +2,21 @@
   <div class="container">
     <p>The terrible monster</p>
     <div class="lifecontainer">
-      <div class="life"></div>
+      <div class="life" :style="{width: `${life * 4}px`}"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'LifeComponent',
-    data: () => ({
-        life: 100,
-    })
+    computed: {
+      ...mapGetters({
+        life: 'getEnemyLife'
+      })
+    }
 }
 </script>
 
@@ -34,7 +38,7 @@ export default {
 .life {
   background-color: red;
   height: 17px;
-  width: 400px;
   position: absolute;
+  z-index: 2;
 }
 </style>
