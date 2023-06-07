@@ -35,10 +35,11 @@ export default {
   methods: {
     attack() {
       const playerAttack = Math.floor(Math.random() * 10) + 5
-      this.$store.commit('setAttackMovement', playerAttack)
+      const enemyAttack = Math.floor(Math.random() * 15) + 5
+      this.$store.commit('setAttackMovement', {playerAttack: playerAttack, enemyAttack: enemyAttack})
     },
     defend() {
-      console.log('defend');
+
     },
     cure() {
       console.log('cure');
@@ -88,8 +89,7 @@ export default {
 
 .lifes {
   display: flex;
-  max-width: 1000px;
-  width: 100%;
+  width: 71%;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -98,8 +98,7 @@ export default {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
-  max-width: 1000px;
-  width: 100%;
+  width: 71%;
   justify-content: space-between;
 }
 </style>

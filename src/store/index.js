@@ -11,10 +11,20 @@ export default new Vuex.Store({
   getters: {
     getEnemyLife(state) {
       return state.enemyLife
+    },
+    getLife(state) {
+      return state.playersLife
     }
   },
   mutations: {
-    setAttackMovement(state, playerAttack) {
+    setAttackMovement(state, {playerAttack, enemyAttack}) {
+      if(enemyAttack < state.playersLife) {
+        state.playersLife -= enemyAttack
+      }
+      else {
+        state.playersLife = 0;
+      }
+
       if(playerAttack < state.enemyLife) {
         state.enemyLife -= playerAttack;
       }

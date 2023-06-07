@@ -2,14 +2,21 @@
   <div class="container">
     <p>You</p>
     <div class="lifecontainer">
-      <div class="life"></div>
+      <div class="life" :style="{width: `${life * 4}px`}"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'LifeComponent',
+    computed: {
+      ...mapGetters({
+        life: 'getLife'
+      })
+    }
 }
 </script>
 
