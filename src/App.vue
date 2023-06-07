@@ -42,7 +42,8 @@ export default {
 
     },
     cure() {
-      console.log('cure');
+      const addLife = Math.floor(Math.random() * 10) + 3;
+      this.$store.commit('setMorePlayersLife', addLife)
     },
     special() {
       console.log('special');
@@ -50,7 +51,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      enemyLife: 'getEnemyLife'
+      enemyLife: 'getEnemyLife',
     })
   }
 };

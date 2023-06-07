@@ -31,6 +31,15 @@ export default new Vuex.Store({
       else {
         state.enemyLife = 0
       }
+    },
+
+    setMorePlayersLife(state, addLife) {
+      if ((addLife + state.playersLife) <= 100) {
+        state.playersLife += addLife
+      }
+      else {
+        state.playersLife = 100;
+      }
     }
   },
   actions: {},
