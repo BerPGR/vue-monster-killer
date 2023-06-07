@@ -26,6 +26,9 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: "App",
+  data: () => ({
+    numberOfAttacks: 0,
+  }),
   components: {
     Title,
     Life,
@@ -34,6 +37,7 @@ export default {
   },
   methods: {
     attack() {
+      this.numberOfAttacks++;
       const playerAttack = Math.floor(Math.random() * 10) + 5
       const enemyAttack = Math.floor(Math.random() * 15) + 5
       this.$store.commit('setAttackMovement', {playerAttack: playerAttack, enemyAttack: enemyAttack})
@@ -46,7 +50,13 @@ export default {
       this.$store.commit('setMorePlayersLife', addLife)
     },
     special() {
-      console.log('special');
+      if (this.numberOfAttacks == 5) {
+        this.$store.commit('setSpecialAttack', 25)
+        this.numberOfAttacks = 0
+      }
+      else {
+        alert('You have to attack at least 5 times to use your special')
+      }
     }
   },
   computed: {

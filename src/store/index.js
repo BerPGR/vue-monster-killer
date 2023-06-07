@@ -40,6 +40,10 @@ export default new Vuex.Store({
       else {
         state.playersLife = 100;
       }
+    },
+
+    setSpecialAttack(state, specialAttack) {
+      state.enemyLife -= specialAttack
     }
   },
   actions: {},
