@@ -14,6 +14,10 @@
         <Selection bgColor="aqua" buttonName="Special" :playerAction="special"/>
       </div>
     </div>
+
+    <div v-if="numberOfMovements > 0" class="decisions">
+      <div class="decision" v-for="movement in movements" :key="movement">{{ movement }}</div>
+    </div>
   </div>
 </template>
 
@@ -28,6 +32,8 @@ export default {
   name: "App",
   data: () => ({
     numberOfAttacks: 0,
+    numberOfMovements: 0, // this value will always be added 2, bc of the players decision and the monster attack
+    movements: []
   }),
   components: {
     Title,
@@ -37,22 +43,41 @@ export default {
   },
   methods: {
     attack() {
+      if (this.playersLife == 0 || this.enemyLife == 0) {
+        return;
+      }
       this.numberOfAttacks++;
       const playerAttack = Math.floor(Math.random() * 10) + 5
       const enemyAttack = Math.floor(Math.random() * 15) + 5
       this.$store.commit('setAttackMovement', {playerAttack: playerAttack, enemyAttack: enemyAttack})
+      this.numberOfMovements += 2;
+      this.movements.push(`Player attacked with ${playerAttack} damage points`)
+      this.movements.push(`Monster attacked with ${enemyAttack} damage points`)
     },
-    defend() {
 
+    defend() {
+      // Later...
     },
+
     cure() {
+      if (this.playersLife == 0 || this.enemyLife == 0) {
+        return;
+      }
       const addLife = Math.floor(Math.random() * 10) + 3;
       this.$store.commit('setMorePlayersLife', addLife)
+      this.numberOfMovements++
+      this.movements.push(`Player cured with ${addLife} life points`)
     },
+
     special() {
+      if (this.playersLife == 0 || this.enemyLife == 0) {
+        return;
+      }
       if (this.numberOfAttacks == 5) {
         this.$store.commit('setSpecialAttack', 25)
         this.numberOfAttacks = 0
+        this.numberOfMovements++
+        this.movements.push(`Player used special attack with ${25} life points`)
       }
       else {
         alert('You have to attack at least 5 times to use your special')
@@ -62,6 +87,7 @@ export default {
   computed: {
     ...mapGetters({
       enemyLife: 'getEnemyLife',
+      playersLife: 'getLife'
     })
   }
 };
@@ -81,8 +107,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #999;
-  height: 100vh;
+  padding-bottom: 10px;
 }
 
 .first {
@@ -111,5 +136,24 @@ export default {
   flex-direction: row;
   width: 71%;
   justify-content: space-between;
+}
+
+.decisions {
+  margin-top: 20px;
+  max-width: 1400px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 2px 15px 25px #555;
+  background-color: #fff;
+}
+
+.decision {
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  color: white;
+  background-color: red;
+  margin-bottom: 5px
 }
 </style>
