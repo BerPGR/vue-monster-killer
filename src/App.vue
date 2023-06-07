@@ -15,6 +15,11 @@
       </div>
     </div>
 
+    <div v-if="playersLife == 0 || enemyLife == 0" class="winner">
+      <h2 v-if="enemyLife == 0" :style="{color: 'green'}">You win :)</h2>
+      <h2 v-else :style="{color: 'red'}">You lose...</h2>
+    </div>
+
     <div v-if="numberOfMovements > 0" class="decisions">
       <div class="decision" v-for="movement in movements" :key="movement">{{ movement }}</div>
     </div>
@@ -136,6 +141,17 @@ export default {
   flex-direction: row;
   width: 71%;
   justify-content: space-between;
+}
+
+.winner {
+  margin-top: 20px;
+  max-width: 1400px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 2px 15px 25px #555;
+  background-color: #fff;
+  text-align: center;
 }
 
 .decisions {
